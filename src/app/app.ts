@@ -67,11 +67,12 @@ export class App implements AfterViewInit {
       return;
     }
     this.started.set(true);
-    queueMicrotask(() => {
+    // wait for the @else block (#board) to render before mounting chessground
+    setTimeout(() => {
       this.mount();
       if (color === 'black') this.aiMove(); // AI is white → moves first
       else this.refresh();
-    });
+    }, 0);
   }
 
   private mount(): void {
