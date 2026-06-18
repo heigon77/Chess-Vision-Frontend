@@ -42,9 +42,14 @@ export class App implements AfterViewInit {
     this.loading.set(true);
     this.status.set('Reading the board…');
     try {
-      const { placement } = await this.api.digitize(file);
-      this.digitized.set(placement);
-      this.status.set('Board detected. Pick your color to start.');
+      const res = await this.api.digitize(file);
+      this.digitized.set(res.placement);
+      const n = res.corrections.length;
+      this.status.set(
+        n > 0
+          ? `Board detected (fixed ${n} digitization ${n === 1 ? 'issue' : 'issues'}). Pick your color.`
+          : 'Board detected. Pick your color to start.',
+      );
     } catch (e) {
       this.status.set('Could not read the board: ' + (e as Error).message);
     } finally {

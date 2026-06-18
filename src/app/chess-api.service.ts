@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
 export const API_BASE = 'https://heigon77-chess-vision-backend.hf.space';
 
 export interface DigitizeResponse {
-  placement: string;
+  raw_placement: string;
+  placement: string; // sanitized (playable)
   fen: string;
+  corrections: string[];
+  valid: boolean;
 }
 
 export interface PredictResponse {
