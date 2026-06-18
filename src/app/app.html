@@ -1,0 +1,55 @@
+<div class="app">
+  <header class="hero">
+    <h1>♟️ Chess Vision</h1>
+    <p class="sub">Upload a chess board photo, then play the position against the
+      move-prediction models from my MSc project (CNN + Stockfish).</p>
+  </header>
+
+  @if (!started()) {
+    <section class="setup">
+      <label class="upload">
+        <input type="file" accept="image/*" (change)="onFile($event)" hidden />
+        <span>{{ loading() ? 'Reading…' : '📷 Choose a board image' }}</span>
+      </label>
+
+      @if (digitized()) {
+        <div class="ready">
+          <p class="detected">Detected: <code>{{ digitized() }}</code></p>
+          <p class="pick">Play as:</p>
+          <div class="colors">
+            <button class="btn" (click)="start('white')">♔ White</button>
+            <button class="btn" (click)="start('black')">♚ Black</button>
+          </div>
+        </div>
+      }
+    </section>
+  } @else {
+    <section class="game">
+      <div #board class="board cg-wrap"></div>
+
+      <aside class="panel">
+        <label class="engine">
+          Model
+          <select [value]="engine()" (change)="engine.set($any($event.target).value)">
+            <option value="hybrid">Hybrid (human + engine)</option>
+            <option value="cnn">CNN (human-like)</option>
+            <option value="stockfish">Stockfish</option>
+          </select>
+        </label>
+
+        @if (lastAi()) {
+          <p class="lastai">Model played <strong>{{ lastAi() }}</strong></p>
+        }
+
+        <button class="btn ghost" (click)="reset()">↺ New board</button>
+      </aside>
+    </section>
+  }
+
+  <p class="status" [class.thinking]="thinking()">{{ status() }}</p>
+
+  <footer class="foot">
+    Digitization + human move prediction · MSc project ·
+    <a href="https://heigon77-chess-vision-backend.hf.space/docs" target="_blank" rel="noopener">API</a>
+  </footer>
+</div>

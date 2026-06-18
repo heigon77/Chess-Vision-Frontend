@@ -1,0 +1,143 @@
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  letter-spacing: -0.02em;
+}
+.hero .sub {
+  color: var(--text-soft);
+  margin-top: 0.4rem;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+.upload {
+  cursor: pointer;
+}
+.upload span {
+  display: inline-block;
+  padding: 1.6rem 2.2rem;
+  border: 2px dashed var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  font-weight: 600;
+  transition: border-color 0.15s;
+}
+.upload:hover span {
+  border-color: var(--accent);
+}
+.ready {
+  text-align: center;
+}
+.detected code {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+.pick {
+  margin: 1rem 0 0.5rem;
+  color: var(--text-soft);
+}
+.colors {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.7rem 1.3rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn.ghost:hover {
+  border-color: var(--accent);
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.board {
+  width: min(86vw, 460px);
+  height: min(86vw, 460px);
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 200px;
+}
+.engine {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.engine select {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--card);
+  font: inherit;
+}
+.lastai {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+.lastai strong {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  text-align: center;
+  margin-top: 1.4rem;
+  color: var(--text-soft);
+}
+.status.thinking {
+  color: var(--accent);
+}
+
+.foot {
+  margin-top: 2.5rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.83rem;
+}
+.foot a {
+  color: var(--accent);
+}
